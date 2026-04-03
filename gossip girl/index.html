@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gossip Girl – the city's most scandalous date-wise social feed with conditional anonymity. You know you love me. XOXO" />
+  <title>Gossip Girl</title>
+
+  <!-- Favicon emoji -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎀</text></svg>" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            purple: {
+              deep: '#0f0c29',
+              mid: '#302b63',
+              dark: '#24243e',
+            },
+          },
+          animation: {
+            fadeIn: 'fadeIn 0.35s ease forwards',
+            slideUp: 'slideUp 0.25s ease forwards',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+  <!-- App Mount Point -->
+  <div id="app">
+    <!-- Initial Loading Screen -->
+    <div class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e]">
+      <div class="brand-logo mb-5">GG</div>
+      <h1 class="font-display text-white text-3xl font-bold mb-2">Gossip Girl</h1>
+      <p class="text-purple-300 text-sm tracking-widest uppercase mb-8">You know you love me. XOXO</p>
+      <div class="spinner"></div>
+    </div>
+  </div>
+
+  <!-- Bootstrap App (ES6 Module) -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

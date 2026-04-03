@@ -1,0 +1,1925 @@
+/* styles/main.css – Gossip Girl global styles */
+
+/* ─── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ─── CSS Variables ─────────────────────────────────────────────────────────── */
+:root {
+    --purple-deep: #0e0e12;
+    --purple-mid: #18181f;
+    --purple-dark: #121218;
+    --accent: #a78bfa;
+    --accent-pink: #f472b6;
+    --accent-glow: rgba(167, 139, 250, 0.25);
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-hover: rgba(255, 255, 255, 0.07);
+    --surface: #1a1a24;
+    --surface-raised: #22222e;
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--purple-deep);
+    min-height: 100vh;
+    color: #e5e7eb;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────────────────── */
+.font-display {
+    font-family: 'Playfair Display', serif;
+}
+
+/* ─── Brand Logo ─────────────────────────────────────────────────────────────── */
+.brand-logo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #9333ea, #ec4899);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: white;
+    box-shadow: 0 0 32px rgba(147, 51, 234, 0.6);
+}
+
+.brand-logo-sm {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #9333ea, #ec4899);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 900;
+    color: white;
+    flex-shrink: 0;
+}
+
+/* ─── Glass Components ───────────────────────────────────────────────────────── */
+.glass-card {
+    background: var(--surface);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    border-color: rgba(167, 139, 250, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.glass-nav {
+    background: rgba(14, 14, 18, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────────── */
+.btn-primary {
+    background: linear-gradient(135deg, #9333ea, #7c3aed);
+    color: white;
+    font-weight: 600;
+    padding: 0.65rem 1.5rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(147, 51, 234, 0.5);
+}
+
+.btn-primary:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.btn-ghost {
+    background: var(--glass-bg);
+    color: #d4b8ff;
+    border: 1px solid var(--glass-border);
+    font-weight: 500;
+    padding: 0.65rem 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-ghost:hover {
+    background: var(--glass-hover);
+    color: white;
+}
+
+.btn-ghost-sm {
+    background: transparent;
+    color: #9ca3af;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0.35rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-ghost-sm:hover {
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-danger:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.4);
+}
+
+.btn-accent-sm {
+    background: linear-gradient(135deg, #ec4899, #db2777);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-accent-sm:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.45);
+}
+
+/* ─── Input Fields ───────────────────────────────────────────────────────────── */
+.input-field {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: white;
+    padding: 0.65rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+}
+
+.input-field::placeholder {
+    color: #6b7280;
+}
+
+.input-field:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.2);
+}
+
+input[type="date"].input-field {
+    color-scheme: dark;
+}
+
+/* ─── Post Card ───────────────────────────────────────────────────────────────── */
+.post-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(192, 132, 252, 0.3);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.avatar-ring {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7c3aed, #ec4899);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 2px rgba(192, 132, 252, 0.3);
+}
+
+.post-content {
+    color: #e5e7eb;
+    line-height: 1.75;
+    font-size: 0.95rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.post-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--glass-border);
+}
+
+/* ─── Action Buttons ──────────────────────────────────────────────────────────── */
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #9ca3af;
+    padding: 0.4rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.active-like {
+    color: #f472b6 !important;
+    border-color: rgba(244, 114, 182, 0.4) !important;
+    background: rgba(244, 114, 182, 0.1) !important;
+}
+
+.active-unlike {
+    color: #facc15 !important;
+    border-color: rgba(250, 204, 21, 0.4) !important;
+    background: rgba(250, 204, 21, 0.08) !important;
+}
+
+.eye-btn {
+    color: #818cf8 !important;
+}
+
+.eye-btn:hover {
+    color: white !important;
+}
+
+/* ─── Date Nav ───────────────────────────────────────────────────────────────── */
+.date-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: #d4b8ff;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.date-nav-btn:hover {
+    background: var(--glass-hover);
+    color: white;
+    transform: scale(1.02);
+}
+
+/* ─── Comment Items ───────────────────────────────────────────────────────────── */
+.comment-item {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    padding: 0.65rem 0.9rem;
+    transition: background 0.2s ease;
+}
+
+.comment-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* ─── Tag Mentions ───────────────────────────────────────────────────────────── */
+.tag {
+    color: #a78bfa;
+    font-weight: 600;
+    background: rgba(167, 139, 250, 0.15);
+    padding: 0 4px;
+    border-radius: 4px;
+}
+
+/* ─── Modals ─────────────────────────────────────────────────────────────────── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+.modal-card {
+    background: linear-gradient(145deg, rgba(30, 20, 60, 0.95), rgba(48, 43, 99, 0.95));
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 1.75rem;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+    animation: slideUp 0.25s ease;
+}
+
+/* ─── Role Badges ────────────────────────────────────────────────────────────── */
+.role-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.badge-admin {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.badge-author {
+    background: rgba(168, 85, 247, 0.2);
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.badge-viewer {
+    background: rgba(59, 130, 246, 0.2);
+    color: #93c5fd;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.badge-pending {
+    background: rgba(234, 179, 8, 0.2);
+    color: #fbbf24;
+    border: 1px solid rgba(234, 179, 8, 0.3);
+}
+
+.badge-accepted {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.badge-rejected {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+/* ─── Tab Buttons ────────────────────────────────────────────────────────────── */
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    padding: 0.5rem 1.25rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.tab-btn:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.tab-active {
+    background: linear-gradient(135deg, #7c3aed, #5b21b6) !important;
+    color: white !important;
+}
+
+.badge-count {
+    background: #ec4899;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0 6px;
+    border-radius: 999px;
+    min-width: 18px;
+    text-align: center;
+    line-height: 18px;
+    height: 18px;
+}
+
+/* ─── Request Banners ────────────────────────────────────────────────────────── */
+.request-banner {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(147, 51, 234, 0.15));
+    border: 1px solid rgba(236, 72, 153, 0.25);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+}
+
+.request-banner-pending {
+    background: rgba(234, 179, 8, 0.1);
+    border: 1px solid rgba(234, 179, 8, 0.25);
+    border-radius: 12px;
+    padding: 0.6rem 1rem;
+    color: #fbbf24;
+}
+
+/* ─── Divider ────────────────────────────────────────────────────────────────── */
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+
+/* ─── Spinners ───────────────────────────────────────────────────────────────── */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(192, 132, 252, 0.2);
+    border-top-color: #c084fc;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.spinner-sm {
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(192, 132, 252, 0.2);
+    border-top-color: #c084fc;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+/* ─── Toast Notifications ────────────────────────────────────────────────────── */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 20, 60, 0.95);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 0.75rem 1.5rem;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    z-index: 999;
+    backdrop-filter: blur(16px);
+    animation: toastIn 0.3s ease, toastOut 0.3s ease 3.2s forwards;
+    white-space: nowrap;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.toast-success {
+    border-color: rgba(74, 222, 128, 0.4);
+    color: #4ade80;
+}
+
+.toast-error {
+    border-color: rgba(248, 113, 113, 0.4);
+    color: #f87171;
+}
+
+.toast-info {
+    border-color: rgba(147, 197, 253, 0.4);
+    color: #93c5fd;
+}
+
+/* ─── Admin Insights Panel ───────────────────────────────────────────────────── */
+.admin-insights {
+    font-size: 0.78rem;
+    line-height: 1.6;
+}
+
+/* ─── Admin Login Button ──────────────────────────────────────────────────────── */
+.admin-login-btn {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.15), rgba(185, 28, 28, 0.1));
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    color: #fca5a5;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.admin-login-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.3), rgba(185, 28, 28, 0.2));
+    border-color: rgba(239, 68, 68, 0.6);
+    color: #fecaca;
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.25);
+    transform: translateY(-1px);
+}
+
+.admin-login-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+
+/* ─── Admin Nav Icons ────────────────────────────────────────────────────────── */
+.admin-nav-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #9ca3af;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.admin-nav-icon:hover {
+    background: rgba(192, 132, 252, 0.12);
+    border-color: rgba(192, 132, 252, 0.4);
+    color: #c084fc;
+    box-shadow: 0 0 12px rgba(192, 132, 252, 0.2);
+}
+
+.shadow-glow {
+    box-shadow: 0 0 24px rgba(147, 51, 234, 0.5);
+}
+
+/* ─── Comments section slide ───────────────────────────────────────────────────── */
+.comments-section {
+    animation: fadeIn 0.2s ease;
+}
+
+/* ─── Post header layout fix ───────────────────────────────────────────────────── */
+.post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.85rem;
+    margin-bottom: 0;
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────────── */
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes toastOut {
+    to {
+        opacity: 0;
+        transform: translate(-50%, 12px);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.35s ease forwards;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(192, 132, 252, 0.3);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(192, 132, 252, 0.5);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   IG-STYLE ADMIN/FEED LAYOUT  (gg-* components)
+══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─── App Shell ──────────────────────────────────────────────────────────── */
+.gg-app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+.gg-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(14, 14, 18, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 1.25rem;
+    gap: 1rem;
+}
+
+.gg-header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
+}
+
+.gg-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.gg-brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    color: white;
+    letter-spacing: -0.01em;
+}
+
+/* ─── Icon Buttons (nav) ─────────────────────────────────────────────────── */
+.gg-icon-btn {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    color: #9ca3af;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.gg-icon-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.gg-icon-btn:hover {
+    background: rgba(192, 132, 252, 0.12);
+    border-color: rgba(192, 132, 252, 0.4);
+    color: #c084fc;
+}
+
+.gg-icon-btn--active {
+    background: linear-gradient(135deg, #7c3aed, #9333ea) !important;
+    border-color: transparent !important;
+    color: white !important;
+    box-shadow: 0 0 16px rgba(124, 58, 237, 0.5);
+}
+
+.gg-avatar-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: opacity 0.2s ease;
+}
+
+.gg-avatar-btn:hover {
+    opacity: 0.8;
+}
+
+.gg-signout-btn {
+    background: transparent;
+    color: #9ca3af;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 0.3rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.gg-signout-btn:hover {
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ─── Main ───────────────────────────────────────────────────────────────── */
+.gg-main {
+    flex: 1;
+    padding-top: 0.5rem;
+}
+
+/* ─── Card ───────────────────────────────────────────────────────────────── */
+.gg-card {
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 1.1rem;
+    transition: border-color 0.25s ease;
+}
+
+.gg-card:hover {
+    border-color: rgba(167, 139, 250, 0.15);
+}
+
+/* ─── Date Nav ───────────────────────────────────────────────────────────── */
+.gg-date-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    max-width: 36rem;
+    margin: 0 auto;
+}
+
+.gg-date-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 0.4rem 1.2rem;
+    min-width: 130px;
+    text-align: center;
+}
+
+.gg-date-label-sm {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #7c3aed;
+    font-weight: 600;
+}
+
+.gg-date-value {
+    color: white;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.gg-date-arrow {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--surface);
+    color: #a78bfa;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.gg-date-arrow:hover {
+    background: var(--surface-raised);
+    border-color: rgba(167, 139, 250, 0.3);
+    color: white;
+}
+
+/* ─── Form elements ──────────────────────────────────────────────────────── */
+.gg-input {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    color: white;
+    padding: 0.6rem 0.9rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gg-input::placeholder {
+    color: #6b7280;
+}
+
+.gg-input:focus {
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+}
+
+input[type="date"].gg-input {
+    color-scheme: dark;
+}
+
+.gg-label {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #a78bfa;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+}
+
+.gg-btn-primary {
+    background: linear-gradient(135deg, #9333ea, #7c3aed);
+    color: white;
+    font-weight: 700;
+    padding: 0.55rem 1.25rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.gg-btn-primary:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(147, 51, 234, 0.5);
+}
+
+.gg-btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.gg-btn-accept {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 0.7rem;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gg-btn-accept:hover {
+    background: rgba(34, 197, 94, 0.25);
+}
+
+.gg-btn-reject {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #f87171;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 0.7rem;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gg-btn-reject:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+/* ─── Identity popup ──────────────────────────────────────────────────────── */
+.gg-popup {
+    position: fixed;
+    z-index: 50;
+    background: var(--surface-raised);
+    border: 1px solid rgba(167, 139, 250, 0.25);
+    border-radius: 14px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    min-width: 220px;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   INSTAGRAM-STYLE POST CARDS  (ig-* components)
+══════════════════════════════════════════════════════════════════════════════ */
+
+.ig-post-card {
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    margin-bottom: 1.25rem;
+}
+
+.ig-post-card:hover {
+    border-color: rgba(167, 139, 250, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* ─── Post Header ────────────────────────────────────────────────────────── */
+.ig-post-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem 0.6rem;
+}
+
+/* ─── Story ring avatar ──────────────────────────────────────────────────── */
+.ig-story-ring {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(135deg, #f9a8d4, #a855f7, #3b82f6);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.ig-story-ring:hover {
+    transform: scale(1.05);
+}
+
+.ig-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #111;
+    border: 2px solid #0d0b1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.ig-avatar-sm {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    font-size: 0.6rem;
+    transition: box-shadow 0.15s ease;
+}
+
+/* ─── Post Content ───────────────────────────────────────────────────────── */
+.ig-post-content {
+    padding: 0 1rem 0.75rem;
+    color: #e5e7eb;
+    font-size: 0.93rem;
+    line-height: 1.75;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* ─── Action bar ─────────────────────────────────────────────────────────── */
+.ig-action-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ig-action-icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #9ca3af;
+    padding: 0.35rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease, transform 0.15s ease;
+}
+
+.ig-action-icon:hover {
+    color: white;
+    transform: scale(1.12);
+}
+
+/* Heart button */
+.ig-action-icon.ig-liked {
+    color: #f43f5e;
+    animation: heartBeat 0.25s ease;
+}
+
+/* Dislike button */
+.ig-action-icon.ig-unliked {
+    color: #facc15;
+}
+
+.ig-btn-ghost {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.ig-btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* ─── Comment input ──────────────────────────────────────────────────────── */
+.ig-comment-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    color: white;
+    padding: 0.35rem 0.1rem;
+    font-size: 0.87rem;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.2s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.ig-comment-input::placeholder {
+    color: #6b7280;
+}
+
+.ig-comment-input:focus {
+    border-bottom-color: #7c3aed;
+}
+
+/* ─── Heartbeat animation ────────────────────────────────────────────────── */
+@keyframes heartBeat {
+    0% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1.35);
+    }
+
+    70% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ─── Flex utilities (in case Tailwind not loaded) ───────────────────────── */
+.flex {
+    display: flex;
+}
+
+.flex-1 {
+    flex: 1 1 0%;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.items-start {
+    align-items: flex-start;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.gap-1 {
+    gap: 0.25rem;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.gap-3 {
+    gap: 0.75rem;
+}
+
+.shrink-0 {
+    flex-shrink: 0;
+}
+
+.min-w-0 {
+    min-width: 0;
+}
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.hidden {
+    display: none;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.inset-0 {
+    inset: 0;
+}
+
+.z-40 {
+    z-index: 40;
+}
+
+.z-50 {
+    z-index: 50;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-y-auto {
+    overflow-y: auto;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.max-w-xl {
+    max-width: 36rem;
+}
+
+.max-w-lg {
+    max-width: 32rem;
+}
+
+.max-w-sm {
+    max-width: 24rem;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mt-1 {
+    margin-top: 0.25rem;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mb-1 {
+    margin-bottom: 0.25rem;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+    margin-bottom: 0.75rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.mb-6 {
+    margin-bottom: 1.5rem;
+}
+
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.py-1 {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.py-6 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.py-16 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.pb-1 {
+    padding-bottom: 0.25rem;
+}
+
+.pb-2 {
+    padding-bottom: 0.5rem;
+}
+
+.pb-16 {
+    padding-bottom: 4rem;
+}
+
+.pt-2 {
+    padding-top: 0.5rem;
+}
+
+.pt-3 {
+    padding-top: 0.75rem;
+}
+
+.pt-6 {
+    padding-top: 1.5rem;
+}
+
+.p-6 {
+    padding: 1.5rem;
+}
+
+.space-y-0>*+* {
+    margin-top: 0;
+}
+
+.space-y-2>*+* {
+    margin-top: 0.5rem;
+}
+
+.space-y-4>*+* {
+    margin-top: 1rem;
+}
+
+.space-y-1>*+* {
+    margin-top: 0.25rem;
+}
+
+.space-y-1\.5>*+* {
+    margin-top: 0.375rem;
+}
+
+.border-t {
+    border-top: 1px solid;
+}
+
+.border-b {
+    border-bottom: 1px solid;
+}
+
+.border-l {
+    border-left: 1px solid;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-xs {
+    font-size: 0.75rem;
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.text-base {
+    font-size: 1rem;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+}
+
+.text-4xl {
+    font-size: 2.25rem;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-mono {
+    font-family: 'Courier New', monospace;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.leading-tight {
+    line-height: 1.25;
+}
+
+.leading-none {
+    line-height: 1;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.tracking-widest {
+    letter-spacing: 0.1em;
+}
+
+.break-words {
+    overflow-wrap: break-word;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+.resize-none {
+    resize: none;
+}
+
+.transition-all {
+    transition: all 0.2s ease;
+}
+
+.transition-colors {
+    transition: color 0.2s ease;
+}
+
+.transition-opacity {
+    transition: opacity 0.2s ease;
+}
+
+.transition-transform {
+    transition: transform 0.2s ease;
+}
+
+.opacity-0 {
+    opacity: 0;
+}
+
+.group:hover .group-hover\:opacity-100 {
+    opacity: 1;
+}
+
+/* Color utilities */
+.text-white {
+    color: #fff;
+}
+
+.text-gray-200 {
+    color: #e5e7eb;
+}
+
+.text-gray-400 {
+    color: #9ca3af;
+}
+
+.text-gray-500 {
+    color: #6b7280;
+}
+
+.text-gray-600 {
+    color: #4b5563;
+}
+
+.text-purple-200 {
+    color: #e9d5ff;
+}
+
+.text-purple-300 {
+    color: #c4b5fd;
+}
+
+.text-purple-400 {
+    color: #a78bfa;
+}
+
+.text-green-400 {
+    color: #4ade80;
+}
+
+.text-red-400 {
+    color: #f87171;
+}
+
+.text-blue-400 {
+    color: #60a5fa;
+}
+
+.bg-purple-900\/40 {
+    background: rgba(88, 28, 135, 0.4);
+}
+
+.border-purple-400 {
+    border-color: #a78bfa;
+}
+
+.border-purple-500\/30 {
+    border-color: rgba(168, 85, 247, 0.3);
+}
+
+.border-white\/10 {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.border-white\/5 {
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.bg-black\/60 {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+}
+
+.shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.-top-1 {
+    top: -0.25rem;
+}
+
+.-right-1 {
+    right: -0.25rem;
+}
+
+/* Grid */
+.grid {
+    display: grid;
+}
+
+.grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.gap-1\.5 {
+    gap: 0.375rem;
+}
+
+/* Sizing helpers */
+.w-3\.5 {
+    width: 0.875rem;
+}
+
+.h-3\.5 {
+    height: 0.875rem;
+}
+
+.w-4 {
+    width: 1rem;
+}
+
+.h-4 {
+    height: 1rem;
+}
+
+.w-5 {
+    width: 1.25rem;
+}
+
+.h-5 {
+    height: 1.25rem;
+}
+
+.w-6 {
+    width: 1.5rem;
+}
+
+.h-6 {
+    height: 1.5rem;
+}
+
+.w-7 {
+    width: 1.75rem;
+}
+
+.h-7 {
+    height: 1.75rem;
+}
+
+.w-8 {
+    width: 2rem;
+}
+
+.h-8 {
+    height: 2rem;
+}
+
+.w-9 {
+    width: 2.25rem;
+}
+
+.h-9 {
+    height: 2.25rem;
+}
+
+.w-10 {
+    width: 2.5rem;
+}
+
+.h-10 {
+    height: 2.5rem;
+}
+
+.w-16 {
+    width: 4rem;
+}
+
+.h-16 {
+    height: 4rem;
+}
+
+.max-h-48 {
+    max-height: 12rem;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+.rounded-xl {
+    border-radius: 0.75rem;
+}
+
+.rounded-lg {
+    border-radius: 0.5rem;
+}
+
+.border {
+    border-width: 1px;
+}
+
+.border-2 {
+    border-width: 2px;
+}
+
+.border-transparent {
+    border-color: transparent;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.inline-flex {
+    display: inline-flex;
+}
+
+.block {
+    display: block;
+}
+
+/* Hover helpers */
+.hover\:text-white:hover {
+    color: #fff;
+}
+
+.hover\:text-purple-200:hover {
+    color: #e9d5ff;
+}
+
+.hover\:text-purple-300:hover {
+    color: #c4b5fd;
+}
+
+.hover\:text-gray-300:hover {
+    color: #d1d5db;
+}
+
+.hover\:text-red-400:hover {
+    color: #f87171;
+}
+
+.hover\:opacity-80:hover {
+    opacity: 0.8;
+}
+
+.hover\:scale-110:hover {
+    transform: scale(1.1);
+}
+
+.hover\:border-purple-400:hover {
+    border-color: #a78bfa;
+}
+
+.hover\:ring-2:hover {
+    box-shadow: 0 0 0 2px;
+}
+
+.hover\:ring-purple-400:hover {
+    --tw-ring-color: #a78bfa;
+    box-shadow: 0 0 0 2px #a78bfa;
+}
+
+.hover\:bg-purple-500\/10:hover {
+    background: rgba(168, 85, 247, 0.1);
+}
+
+.hover\:bg-pink-500\/10:hover {
+    background: rgba(236, 72, 153, 0.1);
+}
+
+.hover\:bg-yellow-500\/10:hover {
+    background: rgba(234, 179, 8, 0.1);
+}
+
+/* Misc */
+.whitespace-nowrap {
+    white-space: nowrap;
+}
+
+.sm\:block {
+    display: none;
+}
+
+@media (min-width: 640px) {
+    .sm\:block {
+        display: block;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   LOGIN PAGE BUTTONS
+══════════════════════════════════════════════════════════════════════════════ */
+
+.gg-btn-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #7c3aed, #9333ea);
+    color: white;
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.gg-btn-google:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+}
+
+.gg-btn-google:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.gg-btn-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.65rem 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: transparent;
+    color: #d1d5db;
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.gg-btn-secondary:hover:not(:disabled) {
+    border-color: rgba(167, 139, 250, 0.3);
+    color: white;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.gg-btn-secondary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.gg-link-btn {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    font-size: 0.82rem;
+    cursor: pointer;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.2s ease;
+}
+
+.gg-link-btn:hover {
+    color: #a78bfa;
+}
+
+.gg-link-btn strong {
+    color: #a78bfa;
+    font-weight: 600;
+}
+
+/* ─── Modal Overlay (matte) ──────────────────────────────────────────────── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+}
+
+.modal-card {
+    background: var(--surface-raised);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+    max-height: 90vh;
+    overflow-y: auto;
+}

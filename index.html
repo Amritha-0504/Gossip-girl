@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Gossip Girl – the city's most scandalous date-wise social feed with conditional anonymity. You know you love me. XOXO" />
+  <title>Gossip Girl</title>
+
+  <!-- Favicon emoji -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎀</text></svg>" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            purple: {
+              deep: '#0f0c29',
+              mid: '#302b63',
+              dark: '#24243e',
+            },
+          },
+          animation: {
+            fadeIn: 'fadeIn 0.35s ease forwards',
+            slideUp: 'slideUp 0.25s ease forwards',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles/main.css" />
+
+  <style>
+    /* ── Splash Screen ─────────────────────────────────────────── */
+
+    /* Zero out margin so no white edges appear on any device */
+    html { box-sizing: border-box; }
+
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      /* 100vw/vh with dvh fallback for mobile browser chrome */
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 9999;
+      background: #000;
+      overflow: hidden;
+      overscroll-behavior: none;
+      touch-action: none;
+      transition: opacity 0.85s ease, visibility 0.85s ease;
+    }
+
+    #splash-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /*
+     * Full-cover video:
+     * Centered + object-fit:cover guarantees no black bars
+     * on any screen ratio (portrait phone, landscape tablet, widescreen laptop).
+     */
+    #splash-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%) translateZ(0);
+      -webkit-transform: translate(-50%, -50%) translateZ(0);
+      /* Portrait phones: cover fills the screen edge-to-edge */
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      will-change: transform;
+    }
+
+    /* Landscape (tablet / laptop / phone rotated): show full video */
+    @media (orientation: landscape) {
+      #splash-video {
+        object-fit: contain;
+      }
+    }
+
+    /* Subtle cinematic vignette */
+    #splash-screen::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.55) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* TAP TO SKIP – shown on touch devices only */
+    #splash-skip-hint {
+      position: absolute;
+      bottom: max(32px, env(safe-area-inset-bottom, 32px));
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.5);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      z-index: 2;
+      pointer-events: none;
+      animation: hintPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes hintPulse {
+      0%, 100% { opacity: 0.3; }
+      50%       { opacity: 1; }
+    }
+
+    /* Desktop: hide the hint (mouse users don't need it) */
+    @media (hover: hover) and (pointer: fine) {
+      #splash-skip-hint { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Splash Screen ─────────────────────────────────────────── -->
+  <div id="splash-screen">
+    <video
+      id="splash-video"
+      autoplay
+      muted
+      playsinline
+      webkit-playsinline
+      preload="auto"
+      disablePictureInPicture
+      x5-video-player-type="h5"
+      x5-video-orientation="portraint"
+    >
+      <source src="video/Gossipgirl-03-26.mov" type="video/mp4">
+      <source src="video/Gossipgirl-03-26.mov" type="video/quicktime">
+    </video>
+    <!-- Tap-to-skip label shown only on touch devices -->
+    <div id="splash-skip-hint">TAP TO SKIP</div>
+  </div>
+
+  <!-- App Mount Point -->
+  <div id="app"></div>
+
+  <!-- Bootstrap App (ES6 Module) -->
+  <script type="module" src="js/app.js"></script>
+
+  <!-- Splash Screen Controller -->
+  <script>
+    (function () {
+      const splash = document.getElementById('splash-screen');
+      const video  = document.getElementById('splash-video');
+      let dismissed = false;
+
+      function dismissSplash() {
+        if (dismissed) return;
+        dismissed = true;
+        clearTimeout(fallback);
+
+        // ✅ Restore scroll IMMEDIATELY — don't wait for transitionend
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+
+        splash.classList.add('hidden');
+        // Remove from DOM after transition (or forced after 1.2s on mobile)
+        setTimeout(() => { if (splash.parentNode) splash.remove(); }, 1200);
+      }
+
+      // Dismiss when video finishes
+      video.addEventListener('ended', dismissSplash, { once: true });
+
+      // Tap / click anywhere to skip (mobile-friendly)
+      splash.addEventListener('click', dismissSplash, { once: true });
+
+      // Safety fallback: 7 seconds max
+      const fallback = setTimeout(dismissSplash, 7000);
+
+      // Error fallback
+      video.addEventListener('error', dismissSplash, { once: true });
+
+      // Mobile autoplay fix
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          const hint = document.getElementById('splash-skip-hint');
+          if (hint) {
+            hint.style.display = 'block';
+            hint.textContent = 'TAP TO PLAY';
+          }
+          splash.addEventListener('click', () => {
+            video.play().catch(() => dismissSplash());
+          }, { once: true });
+        });
+      }
+
+      // Lock body scroll while splash plays
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    })();
+  </script>
+</body>
+
+</html>
